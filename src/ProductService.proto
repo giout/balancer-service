@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package productPackage;
+
+service ProductService {
+    rpc readProducts(NoParam) returns (ProductList) {}
+}
+
+message NoParam {}
+
+message Product {
+    int32 id = 2;
+    string description = 1;
+}
+
+message ProductList {
+    repeated Product products = 2;
+}
