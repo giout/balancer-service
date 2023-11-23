@@ -3,16 +3,25 @@ syntax = "proto3";
 package productPackage;
 
 service ProductService {
-    rpc readProducts(NoParam) returns (ProductList) {}
+    rpc readProducts(NoParam) returns (Result) {}
 }
 
 message NoParam {}
 
 message Product {
-    int32 id = 2;
     string description = 1;
+    int64 id = 2;
 }
 
-message ProductList {
-    repeated Product products = 2;
+message Data {
+    double ram = 1;
+    double cpu = 2;
+    int64 processes = 3;
+    double time = 4;
+    bool error = 5;
+}
+
+message Result {
+    repeated Product products = 1;
+    Data performance = 2;
 }

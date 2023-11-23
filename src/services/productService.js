@@ -22,7 +22,16 @@ const readProducts = async (call, callback) => {
 
     } finally {
         // enviando respuesta
-        callback(null, { 'products': products })
+        callback(null, { 
+            'products': products,
+            'performance': {
+                'ram': 1.434,
+                'cpu': 1.32324,
+                'processes': 5,
+                'time': 25.5454,
+                'error': true
+            }
+        })
     }
 }
 
