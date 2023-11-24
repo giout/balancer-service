@@ -16,9 +16,7 @@ message Product {
 message Data {
     double ram = 1;
     double cpu = 2;
-    int64 processes = 3;
-    double time = 4;
-    bool error = 5;
+    bool error = 3;
 }
 
 message Result {

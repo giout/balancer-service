@@ -22,12 +22,9 @@ const readProducts = async (call, callback) => {
         console.log(err)
 
     } finally {
-        console.log(process.cpuUsage())
         let performance = {
             ram: bytesToGigabytes(os.freemem()), // memoria libre
-            cpu: 1111,
-            processes: 5,
-            time: 25.5454,
+            cpu: 1111, // cpu libre
             error: true
         } 
 
