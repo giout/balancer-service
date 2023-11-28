@@ -1,5 +1,4 @@
 const os = require('os')
-const osUtils = require('node-os-utils')
 const bytes = require('./bytes.js')
 
 // devuelve ram libre en GB
@@ -8,15 +7,12 @@ const getFreeRam = () => {
     return bytes.bytesToGigabytes(ramBytes)
 }
 
-// devuelve cpu libre en %
-const getFreeCpu = async () => {
-    const { cpu } = osUtils
-    const cpuUsage = await cpu.usage()
-
-    return 100 - cpuUsage
+// devuelve velocidad de cpu en MHZ
+const getCpuSpeed = () => {
+    return os.cpus()[0].speed
 }
 
 module.exports = {
     getFreeRam,
-    getFreeCpu
+    getCpuSpeed
 }

@@ -9,5 +9,5 @@ const port = process.env.PORT
 
 server.bindAsync(`localhost:${port}`, credentials, () => {
     server.start()
-    console.log(`Puerto ${port}`)
+    console.log(`Port ${port}`)
 })

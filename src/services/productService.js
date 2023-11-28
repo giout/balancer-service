@@ -1,6 +1,6 @@
 require('dotenv/config.js') // cargando variables de entorno
 const pool = require('../config/database.js')
-const { getFreeRam, getFreeCpu } = require('../utils/system.js')
+const { getFreeRam, getCpuSpeed } = require('../utils/system.js')
 
 const readProducts = async (call, callback) => {
     let products = []
@@ -25,7 +25,7 @@ const readProducts = async (call, callback) => {
     } finally {
         let performance = {
             ram: getFreeRam(), // memoria libre (GB)
-            cpu: await getFreeCpu(), // cpu libre (%)
+            cpu: await getCpuSpeed(), // velocidad de cpu (MHZ)
             error
         } 
 
