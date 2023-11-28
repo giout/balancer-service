@@ -1,5 +1,4 @@
-require('dotenv/config.js') // cargando variables de entorno
-const pool = require('../config/database.js')
+const { getProducts } = require('../db/products.js')
 const { getFreeRam, getCpuSpeed } = require('../utils/system.js')
 
 const readProducts = async (call, callback) => {
@@ -7,16 +6,7 @@ const readProducts = async (call, callback) => {
     let error = false
 
     try {
-        // realizando operacion del microservicio
-        const query = await pool.query('SELECT * FROM products')
-        const result = query.rows   
-        
-        for (const row of result) {
-            products.push({
-                "description": row.descrip,
-                "id": row.cod
-            })
-        }
+        products = await getProducts()
 
     } catch (err) {
         error = true
@@ -25,7 +15,7 @@ const readProducts = async (call, callback) => {
     } finally {
         let performance = {
             ram: getFreeRam(), // memoria libre (GB)
-            cpu: await getCpuSpeed(), // velocidad de cpu (MHZ)
+            cpu: getCpuSpeed(), // velocidad de cpu (MHZ)
             error
         } 
 
